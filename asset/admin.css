@@ -1,0 +1,40 @@
+div#social_share_meta {
+    overflow: hidden;
+}
+a.checkbox-active.active {
+    background-position: left top;
+}
+a.checkbox-active {
+    color: rgba(0,0,0,0);
+    background: url(checkbox.png);
+    background-repeat: no-repeat;
+    overflow: visible;
+    line-height: 22px;
+    display: block;
+    background-position: left bottom;
+    float: left;
+}
+div#social_share_meta .inside {
+    overflow: hidden;
+}
+.unlock_amount.hide{display: none;}
+div#img_upload-preview {
+    max-width: 500px;
+    overflow: hidden;
+    position: relative;
+}
+div#img_upload-preview img{
+    max-width:100%;
+    margin-bottom:10px;
+}
+div#img_upload-preview .delete {
+    position: absolute;
+    right: 0;
+    color: #a60b0b;
+    cursor: pointer;
+    opacity: 0;
+}
+
+div#img_upload-preview:hover .delete{
+    opacity: 1;
+}

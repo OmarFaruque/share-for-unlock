@@ -1,0 +1,96 @@
+@import url('Popup/assets/css/popup.css');
+
+a.insta-custom-follow-button,
+button.fb-custom-share-button {
+    background: #4267b2;
+    color: #fff;
+    border-radius: 3px;
+    padding: 0px 10px;
+    font-size: 14px;
+    line-height: 21px;
+    font-family: arial;
+    margin-top: 0px;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+a.insta-custom-follow-button {
+    background-image: url(instagram-xxl.png);
+    background-size: auto 13px;
+    background-repeat: no-repeat;
+    background-position: 4px 4px;
+    padding-left: 22px;
+    background-color: #AA378E;
+}
+a.insta-custom-follow-button:hover{
+    color:#fff;
+}
+iframe.twitter-follow-button {
+    margin-top: 0px;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+.pull-left{
+    float: left;
+}
+.pull-right{
+    float: right;
+}
+.unlock_social_icons {
+    background: #efefef;
+    border-radius: 0px;
+    position: relative;
+}
+.youtubeButton > div > a{
+    
+
+}
+.youtubeButton > div > a {
+    
+}
+.youtubeButton {
+    display: inline-block;
+    margin-left: 10px;
+}
+.youtubeButton>div>a img {
+    max-width: 80px;
+    border-radius: 2px;
+}
+/*.message_unlock:after {
+    content: "\f242";
+    font-family: dashicons;
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #607D8B;
+    background: rgba(158, 158, 158, 0.38);
+    font-size: 45px;
+    line-height: 45px;
+    cursor: pointer;
+    padding:0 10px;
+}*/
+.message_unlock {
+    position: relative;
+    padding: 10px 52px 10px 10px;
+}
+.message_unlock a span.dashicons {
+    font-size: 43px;
+    position: absolute;
+    right: 25px;
+    top: 0;
+}
+div.popup {
+            overflow: hidden;
+      }
+.advertisement {
+    max-height: 150px;
+    margin: 20px auto;
+    margin-bottom: 0;
+    overflow: hidden;
+}
+.advertisement img {
+    max-height: 150px;
+    height: 100%;
+    margin: 0 auto; 
+}
