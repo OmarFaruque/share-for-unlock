@@ -66,9 +66,6 @@ if (!class_exists('socialShareAndUnlock')) {
 
 			add_action('wp_ajax_nopriv_youtubeSubscribeCallback', array($this, 'youtubeSubscribeCallback'));
 			add_action( 'wp_ajax_youtubeSubscribeCallback', array($this, 'youtubeSubscribeCallback') );
-
-
-
     	}
 
     	
@@ -88,6 +85,7 @@ if (!class_exists('socialShareAndUnlock')) {
 	      $this->settings['youtube_chanel_id'] = (get_option('youtube_chanel_id'))?get_option('youtube_chanel_id'):'';
 	      $this->settings['unlock_popup_url'] = (get_option('unlock_popup_url'))?get_option('unlock_popup_url'):'';
 	      $this->settings['unlock_popup_imgid'] = (get_option('unlock_popup_imgid'))?get_option('unlock_popup_imgid'):'';
+		  $this->settings['unlock_popup_msg'] = (get_option('unlock_popup_msg'))?get_option('unlock_popup_msg'):'';
 	      
 	    }
 
@@ -169,6 +167,13 @@ if (!class_exists('socialShareAndUnlock')) {
 	    	echo '<input style="min-width:70%;" type="url" name="unlock_popup_url" value="'.$this->settings['unlock_popup_url'].'"/><br/><span><small><i>Custom URL (if blank popup set home url automatically.) </i></small></span>';
 	    }
 
+	     /*
+	    * Custom Message for POPUP
+	    */
+	    function admin_popup_msg(){
+	    	echo '<input style="min-width:70%;" type="text" name="unlock_popup_msg" value="'.$this->settings['unlock_popup_msg'].'"/><br/><span><small><i>Message (Message apper in popup top.) </i></small></span>';
+	    }
+
 	    /*
 	    * Popup Image ID
 	    */
@@ -248,6 +253,10 @@ if (!class_exists('socialShareAndUnlock')) {
 
 
 	      	add_settings_section( 'social-unlock-settings-popup', '', array( $this, 'admin_section_popup_title' ), 'socialunlock_settings_section_popup' );
+	      	
+			register_setting( 'socialunlock_settings_popup', 'unlock_popup_msg' ); //Popup Message
+	      	add_settings_field( 'swcc_unlock_settings_social_msg', __( 'Message', 'social_unlock') . '' , array( $this, 'admin_popup_msg' ), 'socialunlock_settings_section_popup', 'social-unlock-settings-popup', array( 'label_for' => 'unlock_popup_msg' ) );
+
 	      	register_setting( 'socialunlock_settings_popup', 'unlock_popup_url' ); //Custom URL
 	      	add_settings_field( 'swcc_unlock_settings_social_url', __( 'URL Link', 'social_unlock') . '' , array( $this, 'admin_popup_url' ), 'socialunlock_settings_section_popup', 'social-unlock-settings-popup', array( 'label_for' => 'unlock_popup_url' ) );
 
@@ -399,21 +408,24 @@ if (!class_exists('socialShareAndUnlock')) {
 		
 		$unAmount = ($row)?$row->amount:0;
 
-		$active 	= get_post_meta( $post->ID, 'active_unlock', true );
+		$active 	= (get_post_meta( $post->ID, 'active_unlock', true ) == 'yes')?'yes':'no';
 	    $amount 	= get_post_meta( $post->ID, 'unlock_amount', true );
 	    
 	    $output = '';
+
 	    if($active == 'yes' && $unAmount >= $amount ){
 			$output .= '<div class="unlok_with_share">'.$content.'</div>';
-		}elseif($active == 'no'){
+		}
+		elseif($active == 'no'){
 			$output .= $content;
 		}
 	    if($active == 'yes'){
 		$output .= '<div class="unlock_social_icons '.$position.'">
-			<div class="message_unlock">'.$this->settings['unlock_visitor_message'].'<a class="popupUnlock" href="#shareForUnlock_'.$post->ID.'"><span class="dashicons dashicons-share-alt2"></span></a></div>';
-		
+			<a class="popupUnlock" href="#shareForUnlock_'.$post->ID.'"><div class="message_unlock">'.$this->settings['unlock_visitor_message'].'<span class="dashicons dashicons-share-alt2"></span></div></a>';
+		//$output .= '<div style="display:none;" id="testP">Content test popup.</div>';
 
 		$output .= '<div style="display:none;" id="shareForUnlock_'.$post->ID.'" class="unlock_popup">';	
+			$output .= '<div class="opupMessage text-center mb10"><p>'.$this->settings['unlock_popup_msg'].'</p></div>';
 			if($this->settings['unlock_fb_page_url'] != ''){
 			$output .= '<div data-id="'.$post->ID.'" class="fb-like" data-href="'.$this->settings['unlock_fb_page_url'].'" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>';
 			}
@@ -475,6 +487,7 @@ if (!class_exists('socialShareAndUnlock')) {
 	*/
 	function frontend_add_script(){
 		wp_enqueue_style( 'front-unlock-css', $this->plugin_url . 'asset/shareforunlock.css', array(), '10122017', 'all' );
+		wp_enqueue_style( 'dashicons');
 		wp_enqueue_script( 'popup-js', $this->plugin_url . '/asset/Popup/assets/js/jquery.popup.min.js', array('jquery'), '10102017', false );
 		wp_enqueue_script( 'unlock-js', $this->plugin_url . 'asset/unlock.js', array('jquery'), '10122017', false );
 		wp_localize_script( 'unlock-js', 'ajaxurl',  admin_url( 'admin-ajax.php' ) );

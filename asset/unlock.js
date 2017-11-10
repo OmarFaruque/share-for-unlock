@@ -4,7 +4,8 @@ jQuery(document).ready(function($){
 		*/
 		$(document.body).on('click', '.popupUnlock', function(e){
 			e.preventDefault();
-			$target = $(this).closest('div').next('div').attr('id');
+			$target = $(this).next('div').attr('id');
+			
 			$(this).popup({
 				content		: $('#' + $target)
 			});
@@ -40,6 +41,7 @@ jQuery(window).load(function($) {
 					alert('test youtube');
 				});
 			}*/
+
 
 
 			/*

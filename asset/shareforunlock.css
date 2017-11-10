@@ -74,7 +74,7 @@ iframe.twitter-follow-button {
     position: relative;
     padding: 10px 52px 10px 10px;
 }
-.message_unlock a span.dashicons {
+a .message_unlock span.dashicons {
     font-size: 43px;
     position: absolute;
     right: 25px;
@@ -94,3 +94,5 @@ div.popup {
     height: 100%;
     margin: 0 auto; 
 }
+.text-center{text-align: center;}
+.mb10{margin-bottom: 10px;}
