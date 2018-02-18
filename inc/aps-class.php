@@ -440,7 +440,7 @@ if (!class_exists('socialShareAndUnlock')) {
 			}
 
 			if($this->settings['youtube_chanel_id'] != ''){
-			$output .= '<div class="youtubeButton"><div class="subscribe"><a onclick="youtubeSubscribe(this)" data-id="'.$post->ID.'" target="_blank" href="https://www.youtube.com/channel/'.$this->settings['youtube_chanel_id'].'?sub_confirmation=1"><img src="'.$this->plugin_url.'/asset/Subscribe-PNG-12.png?ModPagespeed=off" alt="youtube subscribe"/></a></div></div>';
+			$output .= '<div class="youtubeButton"><div class="subscribe"><a onclick="youtubeSubscribe(this)" data-id="'.$post->ID.'" target="_blank" href="https://www.youtube.com/channel/'.$this->settings['youtube_chanel_id'].'?sub_confirmation=1">Youtube</a></div></div>';
 			}
 
 			if($this->settings['unlock_twitter_username'] != ''){

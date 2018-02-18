@@ -30,6 +30,7 @@ iframe.twitter-follow-button {
     margin-top: 0px;
     vertical-align: middle;
     margin-left: 10px;
+    margin-bottom: 0;
 }
 .pull-left{
     float: left;
@@ -47,16 +48,18 @@ iframe.twitter-follow-button {
 
 }
 .youtubeButton > div > a {
-    
+    background-image: url(Subscribe-PNG-12.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: rgba(0,0,0,0);
+    min-width: 87px;
+    display: inline-block;
 }
 .youtubeButton {
     display: inline-block;
     margin-left: 10px;
 }
-.youtubeButton>div>a img {
-    max-width: 80px;
-    border-radius: 2px;
-}
+
 /*.message_unlock:after {
     content: "\f242";
     font-family: dashicons;
@@ -88,6 +91,7 @@ div.popup {
     margin: 20px auto;
     margin-bottom: 0;
     overflow: hidden;
+    text-align: center;
 }
 .advertisement img {
     max-height: 150px;
